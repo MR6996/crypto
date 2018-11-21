@@ -1,6 +1,6 @@
 package cryptography;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.math.BigInteger;
 
 //TODO Write documentation
@@ -35,17 +35,17 @@ public class Point implements Groupable<Point> {
 		return this;
 	}
 	
-	public Point add(Point other, BigDecimal module) {
+	public Point add(Point other, BigInteger module) {
 		// TODO implement sum
 		return null;
 	}
 
-	public Point multiply(Point other, BigDecimal module) {
+	public Point multiply(Point other, BigInteger module) {
 		// TODO implement multiply
 		return null;
 	}
 
-	public Point getInverse(BigDecimal module) {
+	public Point getInverse(BigInteger module) {
 		// TODO implement inverse
 		return null;
 	}

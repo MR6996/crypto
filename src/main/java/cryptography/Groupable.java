@@ -1,6 +1,6 @@
 package cryptography;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 
 //TODO Complete documentation
 
@@ -27,7 +27,7 @@ public interface Groupable<T> {
 	 * @param module
 	 * @return the sum between element T and another element.
 	 */
-	public T add(T other, BigDecimal module);
+	public T add(T other, BigInteger module);
 
 	/**
 	 * Return the multiplication between element T and another element, that is the
@@ -37,7 +37,7 @@ public interface Groupable<T> {
 	 * @param module
 	 * @return the multiplication between element T and another element.
 	 */
-	public T multiply(T other, BigDecimal module);
+	public T multiply(T other, BigInteger module);
 
 	/**
 	 * Return the inverse of element T.
@@ -45,6 +45,6 @@ public interface Groupable<T> {
 	 * @param module
 	 * @return the inverse of element T.
 	 */
-	public T getInverse(BigDecimal module);
+	public T getInverse(BigInteger module);
 
 }
