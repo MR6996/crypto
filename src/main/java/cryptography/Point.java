@@ -1,7 +1,6 @@
 package cryptography;
 
 import java.math.BigInteger;
-import java.math.BigInteger;
 
 //TODO Write documentation
 

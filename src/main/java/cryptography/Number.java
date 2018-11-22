@@ -1,7 +1,6 @@
 package cryptography;
 
 import java.math.BigInteger;
-import java.math.MathContext;
 
 //TODO Write documentation
 
@@ -30,8 +29,7 @@ public class Number implements Groupable<Number> {
 	}
 
 	public Number multiply(Number other, BigInteger module) {
-		//TODO implement multiply
-		return null;
+		return new Number(this.value.modPow(other.value, module));
 	}
 
 	public Number getInverse(BigInteger module) {
