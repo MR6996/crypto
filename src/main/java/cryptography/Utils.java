@@ -11,7 +11,7 @@ public class Utils {
 
 		T temp = g.add(g, m);
 		long i = 2;
-		while (i < attempt && n.equals(temp)) {
+		while (i < attempt && !n.equals(temp)) {
 			temp = temp.add(g, m);
 			i++;
 		}

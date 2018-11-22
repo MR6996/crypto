@@ -30,14 +30,14 @@ public interface Groupable<T> {
 	public T add(T other, BigInteger module);
 
 	/**
-	 * Return the multiplication between element T and another element, that is the
-	 * iteration of {@link add} operation.
+	 * Return the multiplication between this element and a integer n, that is the
+	 * iteration number of {@link add} operation.
 	 * 
-	 * @param other  an element T
+	 * @param n      a BigInteger
 	 * @param module
-	 * @return the multiplication between element T and another element.
+	 * @return the multiplication between this element and a integer n.
 	 */
-	public T multiply(T other, BigInteger module);
+	public T multiply(BigInteger n, BigInteger module);
 
 	/**
 	 * Return the inverse of element T.

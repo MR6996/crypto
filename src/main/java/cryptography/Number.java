@@ -28,8 +28,8 @@ public class Number implements Groupable<Number> {
 		return new Number(this.value.multiply(other.value).remainder(module));
 	}
 
-	public Number multiply(Number other, BigInteger module) {
-		return new Number(this.value.modPow(other.value, module));
+	public Number multiply(BigInteger n, BigInteger module) {
+		return new Number(this.value.modPow(n, module));
 	}
 
 	public Number getInverse(BigInteger module) {

@@ -33,13 +33,13 @@ public class Point implements Groupable<Point> {
 	public Point getElement() {
 		return this;
 	}
-	
+
 	public Point add(Point other, BigInteger module) {
 		// TODO implement sum
 		return null;
 	}
 
-	public Point multiply(Point other, BigInteger module) {
+	public Point multiply(BigInteger n, BigInteger module) {
 		// TODO implement multiply
 		return null;
 	}
