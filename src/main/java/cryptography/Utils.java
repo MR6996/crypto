@@ -52,7 +52,7 @@ public class Utils {
 		return x.multiply(x).add(BigInteger.ONE).mod(module);
 	}
 
-	public static BigInteger[] Bezout(BigInteger a, BigInteger b) {
+	public static BigInteger[] bezout(BigInteger a, BigInteger b) {
 		BigInteger tmp;
 		if (a.compareTo(b) > 0) {
 			tmp = a;
@@ -77,7 +77,7 @@ public class Utils {
 			r = b.divideAndRemainder(a);
 		}
 
-			return new BigInteger[] {t1, s1} ;
+		return new BigInteger[] {t1, s1, a} ;
 	}
 
 }
