@@ -17,7 +17,7 @@ public class RSAHacker {
 		p_1 = p_1.subtract(BigInteger.ONE);
 		BigInteger lamda = p_1.multiply(q_1).divide(p_1.gcd(q_1));
 
-		this.d = Utils.Bezout(lamda, e)[0];
+		this.d = Utils.bezout(lamda, e)[0];
 	}
 
 	public BigInteger getN() {
