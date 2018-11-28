@@ -1,6 +1,8 @@
 package cryptography;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 //TODO Write documentation
 
@@ -59,10 +61,10 @@ public class Utils {
 			a = b;
 			b = tmp;
 		}
-		
+
 		BigInteger s0 = BigInteger.ONE, s1 = BigInteger.ZERO;
 		BigInteger t0 = BigInteger.ZERO, t1 = BigInteger.ONE;
-		
+
 		BigInteger[] r = b.divideAndRemainder(a);
 		while (r[1].compareTo(BigInteger.ZERO) > 0) {
 			tmp = s1;
@@ -77,7 +79,41 @@ public class Utils {
 			r = b.divideAndRemainder(a);
 		}
 
-		return new BigInteger[] {t1, s1, a} ;
+		return new BigInteger[] { t1, s1, a };
+	}
+
+	public static List<BezoutStep> bezoutSteps(BigInteger a, BigInteger b) {
+		ArrayList<BezoutStep> steps = new ArrayList<BezoutStep>();
+		BigInteger tmp;
+
+		if (a.compareTo(b) > 0) {
+			tmp = a;
+			a = b;
+			b = tmp;
+		}
+
+		BigInteger s0 = BigInteger.ONE, t0 = BigInteger.ZERO;
+		steps.add(new BezoutStep(b.toString(), s0.toString(), t0.toString()));
+		BigInteger s1 = BigInteger.ZERO, t1 = BigInteger.ONE;
+		steps.add(new BezoutStep(a.toString(), s1.toString(), t1.toString()));
+
+		BigInteger[] r = b.divideAndRemainder(a);
+		while (r[1].compareTo(BigInteger.ZERO) > 0) {
+			tmp = s1;
+			s1 = s0.subtract(r[0].multiply(s1));
+			s0 = tmp;
+			tmp = t1;
+			t1 = t0.subtract(r[0].multiply(t1));
+			t0 = tmp;
+
+			steps.add(new BezoutStep(r[1].toString(), s1.toString(), t1.toString(), r[0].toString()));
+
+			b = a;
+			a = r[1];
+			r = b.divideAndRemainder(a);
+		}
+
+		return steps;
 	}
 
 }
