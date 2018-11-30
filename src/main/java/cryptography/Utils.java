@@ -10,24 +10,46 @@ public class Utils {
 
 	private static final int CERTAINTY = 50;
 
-	public static <T extends Groupable<T>> BigInteger discreteLog(T n, T g, BigInteger m, long attempt) {
+	public static <T extends Groupable<T>> BigInteger discreteLog(T n, T g, BigInteger m, long attempts) {
 		if (n.equals(g))
 			return new BigInteger("1");
 
 		T temp = g.add(g, m);
 		long i = 2;
-		while (i < attempt && !n.equals(temp)) {
+		while (i < attempts && !n.equals(temp)) {
 			temp = temp.add(g, m);
 			i++;
 		}
 
 		return new BigInteger(Long.toString(i));
 	}
+	
+	public static <T extends Groupable<T>> List<T> discreteLogSteps(T n, T g, BigInteger m, long attempts) {
+		ArrayList<T> steps = new ArrayList<T>();		
+
+		if (!n.equals(g)) {
+			T temp = g.add(g, m);
+			steps.add(temp);
+			long i = 2;
+			while (i < attempts && !n.equals(temp)) {
+				temp = temp.add(g, m);
+				steps.add(temp);
+				i++;
+			}
+		}
+
+		return steps;
+	}
 
 	public static <T extends Groupable<T>> BigInteger discreteLog(T n, T g, BigInteger m) {
 		return discreteLog(n, g, m, 100000);
 	}
 
+	public static <T extends Groupable<T>> List<T> discreteLogSteps(T n, T g, BigInteger m) {
+		return discreteLogSteps(n, g, m, 100000);
+	}
+		
+	
 	public static BigInteger rhoFactorization(BigInteger n) {
 		if (n.isProbablePrime(CERTAINTY))
 			throw new ArithmeticException("n is probably prime!");
