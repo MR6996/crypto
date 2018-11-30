@@ -21,6 +21,18 @@ public class Point implements Groupable<Point> {
 		this.y = y;
 		this.z = z;
 	}
+	
+	public Point(String x, String y) {
+		this( new BigInteger(x), new BigInteger(y));
+	}
+	
+	public Point(String x, String y, String z) {
+		this.x = new BigInteger(x);
+		this.y = new BigInteger(y);
+		this.z = new BigInteger(z);
+	}
+	
+	
 
 	public BigInteger getX() {
 		return x;

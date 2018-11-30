@@ -11,6 +11,10 @@ public class Number implements Groupable<Number> {
 	public Number(BigInteger value) {
 		this.value = value;
 	}
+	
+	public Number(String value) {
+		this.value = new BigInteger(value);
+	}
 
 	public BigInteger getValue() {
 		return value;
