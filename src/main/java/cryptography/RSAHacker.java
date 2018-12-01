@@ -31,6 +31,18 @@ public class RSAHacker {
 		return n;
 	}
 
+	public BigInteger getP() {
+		return p;
+	}
+
+	public BigInteger getQ() {
+		return q;
+	}
+
+	public BigInteger getLambda() {
+		return lambda;
+	}
+
 	public BigInteger getPublicKey() {
 		return e;
 	}
