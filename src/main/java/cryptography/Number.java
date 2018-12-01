@@ -2,40 +2,82 @@ package cryptography;
 
 import java.math.BigInteger;
 
-//TODO Write documentation
 
+/**
+ * Describe an integer as element of a mathematical group. This allow to defines
+ * a sum operation between point. In this case integers are in Galois field,
+ * specifying a prime number (in the methods this is the module parameter).
+ * 
+ * @author Mario Randazzo
+ *
+ */
 public class Number implements Groupable<Number> {
 
-	BigInteger value;
+	/**
+	 * The integer value.
+	 */
+	private BigInteger value;
 
+	/**
+	 * Build a {@link Number} from a {@link BigInteger}.
+	 * 
+	 * @param value a {@link BigInteger}
+	 */
 	public Number(BigInteger value) {
 		this.value = value;
 	}
-	
+
+	/**
+	 * Translate a integer from a string and build a {@link Number}.
+	 * 
+	 * @param value a String contains the representation of an integer.
+	 */
 	public Number(String value) {
 		this.value = new BigInteger(value);
 	}
 
+	/**
+	 * Get the integer value.
+	 * 
+	 * @return a {@link BigInteger}.
+	 */
 	public BigInteger getValue() {
 		return value;
 	}
 
+	/**
+	 * Set the integer value.
+	 * 
+	 * @param value {@link BigInteger}
+	 */
 	public void setValue(BigInteger value) {
 		this.value = value;
 	}
 
+	/* (non-Javadoc)
+	 * @see cryptography.Groupable#getElement()
+	 */
 	public Number getElement() {
 		return this;
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see cryptography.Groupable#add(java.lang.Object, java.math.BigInteger)
+	 */
 	public Number add(Number other, BigInteger module) {
 		return new Number(this.value.multiply(other.value).remainder(module));
 	}
 
+	/* (non-Javadoc)
+	 * @see cryptography.Groupable#multiply(java.math.BigInteger, java.math.BigInteger)
+	 */
 	public Number multiply(BigInteger n, BigInteger module) {
 		return new Number(this.value.modPow(n, module));
 	}
 
+	/* (non-Javadoc)
+	 * @see cryptography.Groupable#getInverse(java.math.BigInteger)
+	 */
 	public Number getInverse(BigInteger module) {
 		return new Number(this.value.negate());
 	}
@@ -69,7 +111,5 @@ public class Number implements Groupable<Number> {
 	public String toString() {
 		return value.toString();
 	}
-	
-	
 
 }

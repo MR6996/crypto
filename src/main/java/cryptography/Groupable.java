@@ -2,10 +2,10 @@ package cryptography;
 
 import java.math.BigInteger;
 
-//TODO Complete documentation
-
 /**
- * Describe the operation of a mathematical Group of elements T.
+ * Describe the operation of a mathematical Group of elements T. All operation
+ * are defined over Galois field, specifying a prime number (in the methods this
+ * is the module parameter).
  * 
  * @author Mario Randazzo
  *
@@ -23,8 +23,8 @@ public interface Groupable<T> {
 	/**
 	 * Return the sum between element T and another element.
 	 * 
-	 * @param other  an element T
-	 * @param module
+	 * @param other  an element T.
+	 * @param module a prime integer.
 	 * @return the sum between element T and another element.
 	 */
 	public T add(T other, BigInteger module);
@@ -33,8 +33,8 @@ public interface Groupable<T> {
 	 * Return the multiplication between this element and a integer n, that is the
 	 * iteration number of {@link add} operation.
 	 * 
-	 * @param n      a BigInteger
-	 * @param module
+	 * @param n      a BigInteger.
+	 * @param module a prime integer.
 	 * @return the multiplication between this element and a integer n.
 	 */
 	public T multiply(BigInteger n, BigInteger module);
@@ -42,7 +42,7 @@ public interface Groupable<T> {
 	/**
 	 * Return the inverse of element T.
 	 * 
-	 * @param module
+	 * @param module a prime integer.
 	 * @return the inverse of element T.
 	 */
 	public T getInverse(BigInteger module);
