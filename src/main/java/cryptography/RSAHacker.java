@@ -2,22 +2,29 @@ package cryptography;
 
 import java.math.BigInteger;
 
+//TODO write documentation.
+
 public class RSAHacker {
 
 	private BigInteger n;
 	private BigInteger e;
 	private BigInteger d;
+	private BigInteger p;
+	private BigInteger q;
+	private BigInteger lambda;
 
+	
 	public RSAHacker(BigInteger n, BigInteger e) {
 		this.n = n;
 		this.e = e;
 
-		BigInteger p_1 = Utils.rhoFactorization(n);
-		BigInteger q_1 = n.divide(p_1).subtract(BigInteger.ONE);
-		p_1 = p_1.subtract(BigInteger.ONE);
-		BigInteger lamda = p_1.multiply(q_1).divide(p_1.gcd(q_1));
+		this.p = Utils.rhoFactorization(n);
+		this.q = n.divide(p);
+		BigInteger p_1 = p.subtract(BigInteger.ONE);
+		BigInteger q_1 = q.subtract(BigInteger.ONE);
+		this.lambda = p_1.multiply(q_1).divide(p_1.gcd(q_1));
 
-		this.d = Utils.bezout(lamda, e)[0];
+		this.d = Utils.bezout(lambda, e)[0];
 	}
 
 	public BigInteger getN() {
