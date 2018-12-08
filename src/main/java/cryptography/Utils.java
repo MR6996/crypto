@@ -56,9 +56,6 @@ public class Utils {
 	}
 
 	public static BigInteger rhoFactorization(BigInteger n) {
-		if (n.isProbablePrime(CERTAINTY))
-			throw new ArithmeticException("n is probably prime!");
-
 		BigInteger xi = f(new BigInteger("2"), n);
 		BigInteger x2i = f(xi, n);
 		BigInteger gcd;
