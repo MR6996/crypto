@@ -79,7 +79,7 @@ public class Number implements Groupable<Number> {
 	 * @see cryptography.Groupable#getInverse(java.math.BigInteger)
 	 */
 	public Number getInverse(BigInteger module) {
-		return new Number(this.value.negate());
+		return new Number(this.value.modInverse(module));
 	}
 
 	@Override
