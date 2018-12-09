@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Utils {
 
-	private static final int CERTAINTY = 50;
+	private static final int CERTAINTY = 6;
 
 	public static <T extends Groupable<T>> BigInteger discreteLog(T n, T g, BigInteger m, long attempts)
 			throws ArithmeticException {

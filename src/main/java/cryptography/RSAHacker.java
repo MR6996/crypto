@@ -6,6 +6,9 @@ import java.math.BigInteger;
 
 public class RSAHacker {
 
+
+	private static final int CERTAINTY = 6;
+	
 	private BigInteger n;
 	private BigInteger e;
 	private BigInteger d;
@@ -14,17 +17,24 @@ public class RSAHacker {
 	private BigInteger lambda;
 
 	
-	public RSAHacker(BigInteger n, BigInteger e) {
+	public RSAHacker(BigInteger n, BigInteger e) throws ArithmeticException {
 		this.n = n;
 		this.e = e;
 
 		this.p = Utils.rhoFactorization(n);
 		this.q = n.divide(p);
+		
+		if(!p.isProbablePrime(CERTAINTY) || !q.isProbablePrime(CERTAINTY)) 
+			throw new ArithmeticException();
+		
 		BigInteger p_1 = p.subtract(BigInteger.ONE);
 		BigInteger q_1 = q.subtract(BigInteger.ONE);
 		this.lambda = p_1.multiply(q_1).divide(p_1.gcd(q_1));
-
-		this.d = Utils.bezout(lambda, e)[0];
+		
+		BigInteger[] bezoutResult = Utils.bezout(lambda, e);
+		if(!bezoutResult[2].equals(BigInteger.ONE))
+			throw new ArithmeticException();
+		this.d = bezoutResult[0];
 	}
 
 	public BigInteger getN() {
